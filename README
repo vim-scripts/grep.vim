@@ -177,7 +177,11 @@ this is set to agrep. You can change this using the let command:
       :let Agrep_Path = 'd:\tools\agrep.exe'
 
 The 'Grep_Find_Path' variable is used to locate the find utility. By
-default, this is set to d:\tools\find.exe. You can change this using the let
+default, this is set to 'find'. Note that on MS-Windows, there is a find.exe
+that is part of the base OS. This find utility is different from the the
+Unix find utility. You cannot use this utility with this plugin. You must
+install the Unix compatible find utility and set the Grep_Find_Path variable
+to point to the location of the utility. You can change this using the let
 command:
 
       :let Grep_Find_Path = 'd:\tools\find.exe'
@@ -231,13 +235,13 @@ recursive searches:
 
       :let Grep_Find_Use_Xargs = 0
 
-To handle file names with space characters in them, the xargs utility
-is invoked with the '--null' argument. If the xargs utility in your system
-doesn't accept the '--null' argument, then you can change the
-Grep_Xargs_Options variable. For example, to use the '--print0' xargs
-argument, you can use the following command:
+To handle file names with space characters in them, the xargs utility is
+invoked with the '-0' argument. If the xargs utility in your system doesn't
+accept the '-0' argument, then you can change the Grep_Xargs_Options
+variable. For example, to use the '--null' xargs argument, you can use the
+following command:
 
-	:let Grep_Xargs_Options = '--print0'
+	:let Grep_Xargs_Options = '--null'
 
 The Grep_Cygwin_Find variable should be set to 1, if you are using the find
 utility from the cygwin package. This setting is used to handle the
